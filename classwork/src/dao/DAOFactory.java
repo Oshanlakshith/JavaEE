@@ -1,12 +1,8 @@
 package dao;
 
 
-import Dao.Custom.Impl.CustomerDaoImpl;
-import Dao.Custom.Impl.ItemDaoImpl;
-import Dao.Custom.Impl.OrderDaoImpl;
-
 public class DAOFactory {
-    private static DAOFactory daoFactory;
+ /*   private static DAOFactory daoFactory;
 
     private DAOFactory() {
     }
@@ -32,6 +28,6 @@ public class DAOFactory {
 
     public enum DAOTypes {
         CUSTOMER, ITEM, ORDER
-    }
+    }*/
 }
 
