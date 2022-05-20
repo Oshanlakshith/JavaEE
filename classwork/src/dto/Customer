@@ -1,4 +1,4 @@
-function CustomerDTO(id, name, address,contact, salary) {
+function Customer(id, name, address,contact, salary) {
     var __id = id;
     var __name = name;
     var __address = address;
