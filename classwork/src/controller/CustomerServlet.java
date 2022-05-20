@@ -20,10 +20,22 @@ public class CustomerServlet extends HttpServlet {
        try {
            resp.setContentType("application/json");
            resp.getWriter().print(customerDAO.getAll());
+
        } catch (SQLException throwables) {
            throwables.printStackTrace();
        } catch (ClassNotFoundException e) {
            e.printStackTrace();
        }
+    }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       /* try {
+            Customer customer=new Customer(req.getParameter("txtCustomerId"),req.getParameter("txtCustomerName"), req.getParameter("txtCustomerAddress"), req.getParameter("txtCustomerContact"),req.getParameter("txtCustomerSalary"));
+            customerDAO.add(customer);
+            System.out.println(customer);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }*/
     }
 }

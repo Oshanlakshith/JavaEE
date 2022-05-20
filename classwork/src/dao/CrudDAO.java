@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface CrudDAO<T,ID>{
 JsonArray getAll() throws SQLException, ClassNotFoundException;
-boolean add(T t);
-boolean update(T t);
-boolean delete(ID id);
+boolean add(T t) throws SQLException, ClassNotFoundException;
+boolean update(T t) throws SQLException, ClassNotFoundException;
+boolean delete(ID id) throws SQLException, ClassNotFoundException;
 }

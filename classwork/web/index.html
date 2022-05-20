@@ -107,15 +107,18 @@
                 </form>
             </div>
             <div class="col-10 col-md-5 col-lg-5 mt-2">
-                <button class="btn btn-info position-relative m-2" data-bs-target="#registerCustomer"
+                <button class="btn btn-info position-relative m-2" type="button" data-bs-target="#registerCustomer"
                         data-bs-toggle="modal">Add Customer
                 </button>
                 <!--<button class="btn btn-warning position-relative m-2">View All Customers</button>-->
-                <button class="btn btn-primary position-relative m-2" data-bs-target="#updateCustomer"
+                <button class="btn btn-primary position-relative m-2" type="button" data-bs-target="#updateCustomer"
                         data-bs-toggle="modal">Update Customer
                 </button>
-                <button class="btn btn-danger position-relative m-2" data-bs-target="#deleteCustomer"
+                <button class="btn btn-danger position-relative m-2" type="button" data-bs-target="#deleteCustomer"
                         data-bs-toggle="modal">Delete Customer
+                </button>
+                <button class="btn alert-primary position-relative m-3" type="button" id="#btngetAll"
+                        data-bs-toggle="modal">GetAll
                 </button>
             </div>
         </div>
@@ -345,7 +348,7 @@
                 <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="customerForm">
                     <div class="ms-3 me-3">
                         <label class="form-label fw-bold mb-0" for="txtCustomerId">Customer ID :</label>
                         <input class="form-control" id="txtCustomerId"
@@ -365,7 +368,7 @@
                         <p><small class="text-danger" id="customerAddressError"></small></p>
                     </div>
                     <div class="ms-3 me-3">
-                        <label class="form-label fw-bold mb-0" for="txtCustomerAddress">Customer Contact :</label>
+                        <label class="form-label fw-bold mb-0" for="txtCustomerContact">Customer Contact :</label>
                         <input class="form-control" id="txtCustomerContact" type="text">
                         <p><small class="text-danger" id="customerContactError"></small></p>
                     </div>
@@ -618,7 +621,26 @@
         </div>
     </div>
 </div>
+<script>
+    loadAllCustomers();
+    function loadAllCustomers() {
+        $("#customerTable").empty();
+        $.ajax({
+            url: "customer",
+            method: "GET",
+            // dataType:"json", // please convert the response into JSON
+            success: function (resp) {
+                console.log(typeof resp);
+                for (const customer of resp) {
+                    let row = `<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.contact}</td><td>${customer.salary}</td></tr>`;
+                    $("#customerTable").append(row);
+                }
+            }
+        });
 
+    }
+
+</script>
 
 <script src="assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
@@ -629,5 +651,6 @@
 <script src="Model/customerDTO.js"></script>
 <script src="Model/itemDTO.js"></script>
 <script src="Model/cComboDTO.js"></script>
+
 </body>
 </html>

@@ -4,15 +4,17 @@ public class Customer {
     private String id;
     private String name;
     private String address;
+    private  String contact;
     private String salery;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String address, String salery) {
+    public Customer(String id, String name, String address, String contact, String salery) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.contact = contact;
         this.salery = salery;
     }
 
@@ -40,6 +42,14 @@ public class Customer {
         this.address = address;
     }
 
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
     public String getSalery() {
         return salery;
     }
@@ -54,6 +64,7 @@ public class Customer {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
                 ", salery='" + salery + '\'' +
                 '}';
     }
