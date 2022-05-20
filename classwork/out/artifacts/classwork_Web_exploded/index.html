@@ -498,35 +498,34 @@
                 <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="itemForm">
                     <div class="ms-3 me-3">
                         <label class="form-label fw-bold mb-0" for="txtIcode">Item Code :</label>
-                        <input class="form-control" id="txtIcode"
-                               type="text">
+                        <input class="form-control" id="txtIcode" name="itemcode" type="text">
                         <p><small class="text-danger" id="itemCodeError"></small></p>
                     </div>
                     <div class="ms-3 me-3">
                         <label class="form-label fw-bold mb-0" for="txtItemName">Item Name :</label>
-                        <input class="form-control" id="txtItemName"
+                        <input class="form-control" name="itemname" id="txtItemName"
                                type="text">
                         <p><small class="text-danger" id="itemNameError"></small></p>
                     </div>
                     <div class="ms-3 me-3">
                         <label class="form-label fw-bold mb-0" for="txtItemUnitPrice">Item Unit Price :</label>
-                        <input class="form-control" id="txtItemUnitPrice"
+                        <input class="form-control" name="unitprice" id="txtItemUnitPrice"
                                type="number">
                         <p><small class="text-danger" id="itemUnitPriceError"></small></p>
                     </div>
                     <div class="ms-3 me-3">
                         <label class="form-label fw-bold mb-0" for="txtItemQty">Item Quantity :</label>
-                        <input class="form-control" id="txtItemQty"
+                        <input class="form-control" name="quantity" id="txtItemQty"
                                type="number">
                         <p><small class="text-danger" id="itemQtyError"></small></p>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" id="btnAddItem" type="submit">Save</button>
+                <button class="btn btn-primary" id="btnAddItem" type="button">Save</button>
                 <button class="btn btn-secondary" id="btnclearitemform" type="reset">Clear</button>
             </div>
         </div>
@@ -652,6 +651,36 @@
             }
         });
     });
+
+    function loadAllItem() {
+        $("#customerTable").empty();
+        $.ajax({
+            url: "item",
+            method: "GET",
+            dataType: "json", // please convert the response into JSON
+            success: function (resp) {
+                console.log(typeof resp);
+                for (const customer of resp) {
+                    let row = `<tr><td>${item.icode}</td><td>${item.iname}</td><td>${item.iprice}</td><td>${item.qty}</td></tr>`;
+                    $("#customerTable").append(row);
+                }
+            }
+        });
+
+    }
+    $('#btnAddItem').click(function () {
+        var data =  $('#itemForm').serialize();
+        $.ajax({
+            url:"item",
+            method:"POST",
+            data:data,
+            success:function (res) {
+                alert(res);
+                console.log("Save");
+            }
+        })
+    })
+
 </script>
 
 <script src="assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
