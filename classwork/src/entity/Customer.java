@@ -1,71 +1,60 @@
 package entity;
 
 public class Customer {
-    private String id;
-    private String name;
-    private String address;
-    private  String contact;
-    private String salery;
+    private String Id;
+    private String Name;
+    private String Address;
+    private  String Contact;
+    private String Salery;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String address, String contact, String salery) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.contact = contact;
-        this.salery = salery;
+    public Customer(String Id, String name, String address, String contact, String salery) {
+        this.Id = Id;
+        Name = name;
+        Address = address;
+        Contact = contact;
+        Salery = salery;
     }
 
     public String getId() {
-        return id;
+        return Id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        Address = address;
     }
 
     public String getContact() {
-        return contact;
+        return Contact;
     }
 
     public void setContact(String contact) {
-        this.contact = contact;
+        Contact = contact;
     }
 
     public String getSalery() {
-        return salery;
+        return Salery;
     }
 
     public void setSalery(String salery) {
-        this.salery = salery;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", contact='" + contact + '\'' +
-                ", salery='" + salery + '\'' +
-                '}';
+        Salery = salery;
     }
 }

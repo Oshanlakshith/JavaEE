@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class CustomerDAOImpl implements CrudDAO<Customer,String> {
     @Override
     public JsonArray getAll() throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT*FROM Customer");
+        ResultSet rst = CrudUtil.executeQuery("SELECT*FROM customer");
         Customer customer;
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
@@ -36,34 +36,21 @@ public class CustomerDAOImpl implements CrudDAO<Customer,String> {
         return arrayBuilder.build();
     }
 
+
+
     @Override
     public boolean add(Customer customer) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean delete(String s) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-  /*  @Override
-    public boolean add(Customer customer) throws SQLException, ClassNotFoundException {
-  *//*     return CrudUtil.executeUpdate("INSERT INTO Customer VALUES(?,?,?,?)",
+       return CrudUtil.executeUpdate("INSERT INTO customer VALUES(?,?,?,?,?)",
                customer.getId(),
                customer.getName(),
                customer.getAddress(),
                customer.getContact(),
-               customer.getSalery());*//*
+               customer.getSalery());
     }
 
     @Override
     public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
-       return CrudUtil.executeUpdate("UPDATE customer SET name=?,address=?,salery=? WHERE id=?",
+       return CrudUtil.executeUpdate("UPDATE customer SET Name=?,Address=?,Salery=? WHERE Id=?",
                customer.getName(),
                customer.getAddress(),
                customer.getContact(),
@@ -75,5 +62,6 @@ public class CustomerDAOImpl implements CrudDAO<Customer,String> {
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("DELETE FROM customer WHERE id=?",id);
-    }*/
+    }
+
 }

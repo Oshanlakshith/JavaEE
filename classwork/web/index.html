@@ -623,12 +623,13 @@
 </div>
 <script>
     loadAllCustomers();
+
     function loadAllCustomers() {
         $("#customerTable").empty();
         $.ajax({
             url: "customer",
             method: "GET",
-            // dataType:"json", // please convert the response into JSON
+            dataType: "json", // please convert the response into JSON
             success: function (resp) {
                 console.log(typeof resp);
                 for (const customer of resp) {
@@ -640,6 +641,17 @@
 
     }
 
+    $("#btnRegisterCustomer").click(function () {
+        var data = $("#customerForm").serialize();
+        $.ajax({
+            url: "customer",
+            method: "POST",
+            data: data,
+            success: function (res) {
+                alert(res);
+            }
+        });
+    });
 </script>
 
 <script src="assets/Bootstrap/js/bootstrap.bundle.min.js"></script>
